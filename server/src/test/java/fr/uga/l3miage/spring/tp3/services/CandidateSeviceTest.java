@@ -32,7 +32,6 @@ public class CandidateSeviceTest {
     @Test
     void getCandidateAverageTest() throws CandidateNotFoundException {
         // given
-        // membuat entitas nilai
         CandidateEvaluationGridEntity candidateEvaluationGridEntityValide = CandidateEvaluationGridEntity
                 .builder()
                 .grade(12.5)
@@ -43,9 +42,8 @@ public class CandidateSeviceTest {
                 .grade(9.8)
                 .build();
 
-        // ngebuat sebuah liste nilai, yang nantinya akan di assign ke sebuah candidate
-        Set<CandidateEvaluationGridEntity> setCandidateEntity1 = new HashSet<>(); // membuat list nilai
-        setCandidateEntity1.add(candidateEvaluationGridEntityValide); // memasukkan nilai (valide) ke liste nilai
+        Set<CandidateEvaluationGridEntity> setCandidateEntity1 = new HashSet<>();
+        setCandidateEntity1.add(candidateEvaluationGridEntityValide);
         setCandidateEntity1.add(candidateEvaluationGridEntityNonValide);
 
         ExamEntity examEntity = ExamEntity
@@ -54,28 +52,19 @@ public class CandidateSeviceTest {
                 .candidateEvaluationGridEntities(setCandidateEntity1)
                 .build();
 
-        // membuat entitas candidate. untuk meng-assign (salah satu) liste nilai yang tadi udah dibuat
         CandidateEntity candidateEntity1 = CandidateEntity
                 .builder()
                 .email("iAmAStudent@univ-grenoble-alpes.fr")
-                .candidateEvaluationGridEntities(setCandidateEntity1) // membuat relasi antara class CandidateEntity dan class CandidateEvaluationGridEntityValide. Menyatukan candidateEntity dengan list candidateEvaluationGridEntityValide. Implementasi relasi unidirectionnel, tapi punya kita itu tuh bidirectionnel.
+                .candidateEvaluationGridEntities(setCandidateEntity1)
                 .build();
 
 
-        // implementasi bidirectionnel antara sebuah nilai dan seorang kandidat
         candidateEvaluationGridEntityValide.setCandidateEntity(candidateEntity1);
         candidateEvaluationGridEntityNonValide.setCandidateEntity(candidateEntity1);
 
-        // implementasi bidirectionnel antara sebuah credit (weight) dan sebuah nilai
         candidateEvaluationGridEntityValide.setExamEntity(examEntity);
         candidateEvaluationGridEntityNonValide.setExamEntity(examEntity);
 
-        /*
-        * signature dari fungsi ini ditambahin throws CandidateNotFoundException, karena kalo engga nanti error. Karena
-        * si fungsi yang mau kita test itu (getCandidateAverageTest()) ngembaliin CandidateNotFoundRestException kalo
-        * misalnya engga ketemu. Jadi biar koheren, fungsi ini (getCandidateAverageTestTest()) juga kita tambahin throws
-        * kalo misalnya ada error atau engga nemu kandidat berdasarkan Id yang dikasih.
-        * */
         when(candidateComponent.getCandidatById(anyLong())).thenReturn(candidateEntity1);
 
         // when
