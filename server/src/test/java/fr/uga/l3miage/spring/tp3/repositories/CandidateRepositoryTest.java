@@ -202,7 +202,7 @@ public class CandidateRepositoryTest {
 
         //then
         assertThat(candidateEntitiesResponses).hasSize(2); // hasilnya adalah candidateEntity2 dan candidateEntity3; karena mereka false dan kurang dari 2000
-        assertThat(candidateEntitiesResponses.stream().findFirst().get().getBirthDate()).isEqualTo(LocalDate.parse("1992-07-17"));
+        assertThat(candidateEntitiesResponses.stream().findFirst().get().getBirthDate()).isEqualTo(LocalDate.parse("1995-05-18"));
 
         assertThat(candidateEntitiesResponses1).hasSize(0); // hasilnya adalah 0 karena ngga ada yang lebih tua dari 1900
 
