@@ -80,64 +80,6 @@ public class CandidateRepositoryTest {
         */
     }
 
-/*    @Test
-    void testRequestfindAllByCandidateEvaluationGridEntitiesGradeLessThan(){
-        // given
-        // membuat entitas nilai
-        CandidateEvaluationGridEntity candidateEvaluationGridEntityValide = CandidateEvaluationGridEntity
-                .builder()
-                .grade(12.5)
-                .build();
-
-        // ngebuat sebuah liste nilai, yang nantinya akan di assign ke sebuah candidate
-        Set<CandidateEvaluationGridEntity> setCandidateEntity1 = new HashSet<>(); // membuat list nilai
-        setCandidateEntity1.add(candidateEvaluationGridEntityValide); // memasukkan nilai (valide) ke liste nilai
-
-        // membuat entitas nilai
-        CandidateEvaluationGridEntity candidateEvaluationGridEntityNonValide = CandidateEvaluationGridEntity
-                .builder()
-                .grade(9.8)
-                .build();
-
-        // ngebuat sebuah liste nilai, yang nantinya akan di assign ke sebuah candidate
-        Set<CandidateEvaluationGridEntity> setCandidateEntity2 = new HashSet<>(); // membuat liste kosong nilai
-        setCandidateEntity2.add(candidateEvaluationGridEntityNonValide); // memasukkan nilai (nonValide) ke liste nilai yang baru dibuat
-
-        // semua entitas nilai dimasukkan ke dalam repository untuk evaluation grid candidat
-        candidateEvaluationGridRepository.save(candidateEvaluationGridEntityValide); // memasukkan nilai (valide) ke repository
-        candidateEvaluationGridRepository.save(candidateEvaluationGridEntityNonValide); // memasukkan nilai (non valide) ke repository
-
-        // membuat entitas candidate. untuk meng-assign (salah satu) liste nilai yang tadi udah dibuat
-        CandidateEntity candidateEntity1 = CandidateEntity
-                .builder()
-                .email("iAmAStudent@univ-grenoble-alpes.fr")
-                .candidateEvaluationGridEntities(setCandidateEntity1) // membuat relasi antara class CandidateEntity dan class CandidateEvaluationGridEntityValide. Menyatukan candidateEntity dengan list candidateEvaluationGridEntityValide. Implementasi relasi unidirectionnel, tapi punya kita itu tuh bidirectionnel.
-                .build();
-
-        // membuat entitas candidate. untuk meng-assign (salah satu) liste nilai yang tadi udah dibuat
-        CandidateEntity candidateEntity2 = CandidateEntity
-                .builder()
-                .email("whereAreU?@gmail.com")
-                .candidateEvaluationGridEntities(setCandidateEntity2) // membuat relasi antara class CandidateEntity dan class CandidateEvaluationGridEntityValide. Menyatukan candidateEntity dengan list candidateEvaluationGridEntityValide. Implementasi relasi unidirectionnel, tapi punya kita itu tuh bidirectionnel.
-                .build();
-
-        candidateEvaluationGridEntityValide.setCandidateEntity(candidateEntity1);
-        candidateEvaluationGridEntityNonValide.setCandidateEntity(candidateEntity2);
-
-        // given
-        candidateRepository.save(candidateEntity1);
-        candidateRepository.save(candidateEntity2);
-
-        // when
-        Set<CandidateEntity> candidateEntitiesResponses = candidateRepository.findAllByCandidateEvaluationGridEntitiesGradeLessThan(13); // selection de la bd
-        //Set<CandidateEntity> candidateEntitiesResponses1 = candidateRepository.findAllByCandidateEvaluationGridEntitiesGradeLessThan(13); // selection de la bd
-
-        //then
-        assertThat(candidateEntitiesResponses).hasSize(1); // hasilnya adalah candidateEntity2 dan candidateEntity3; karena mereka false dan kurang dari 2000
-
-        // assertThat(candidateEntitiesResponses1).hasSize(0); // hasilnya adalah 0 karena ngga ada yang lebih tua dari 1900
-    }*/
-
     @Test
     void testRequestfindAllByCandidateEvaluationGridEntitiesGradeLessThan(){
         // given
@@ -152,7 +94,6 @@ public class CandidateRepositoryTest {
                 .builder()
                 .grade(9.8)
                 .build();
-
 
 
         // ngebuat sebuah liste nilai, yang nantinya akan di assign ke sebuah candidate
